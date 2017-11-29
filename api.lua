@@ -1310,6 +1310,7 @@ local npc_attack = function(self)
 		return
 	end
 
+	local dist
 	local p, sp, obj, min_player
 	local s = self.object:get_pos()
 	local min_dist = self.view_range + 1
