@@ -1750,23 +1750,18 @@ local do_states = function(self, dtime)
 					local radius = self.explosion_radius or 1
 					local damage_radius = radius * 2
 
-					-- dont damage anything if area protected or next to water
-					--[[if minetest.find_node_near(pos, 1, {"group:water"})
-					or minetest.is_protected(pos, "") then
-
-						damage_radius = 0
-					end
-					--]]
 					self.object:remove()
 
 					if minetest.get_modpath("tnt") and tnt and tnt.boom then
-					--and not minetest.is_protected(pos, "") then
-						tnt.boom(pos, {
-							radius = radius,
-							damage_radius = damage_radius,
-							sound = self.sounds.explode,
-							ignore_protection = not minetest.is_protected(pos, "")
-						})
+						tnt.boom(
+							pos,
+							{
+								radius = radius,
+								damage_radius = damage_radius,
+								sound = self.sounds.explode,
+								ignore_protection = not minetest.is_protected(pos, "")
+							},
+							true) -- NALC: add "true" pour explosion sans flammes (requiert tnt mod from nalc)
 					else
 						minetest.sound_play(self.sounds.explode, {
 							pos = pos,
