@@ -60,7 +60,8 @@ local spawn_protected = minetest.settings:get_bool("mobs_spawn_protected") ~= fa
 local remove_far = minetest.settings:get_bool("remove_far_mobs")
 local difficulty = tonumber(minetest.settings:get("mob_difficulty")) or 1.0
 local show_health = minetest.settings:get_bool("mob_show_health") ~= false
-local max_per_block = tonumber(minetest.settings:get("max_objects_per_block")) or 99
+--local max_per_block = tonumber(minetest.settings:get("max_objects_per_block")) or 99
+local max_per_block = 5 -- NALC <-- Fix too much mobs spawning when chunk load
 
 -- Peaceful mode message so players will know there are no monsters
 if peaceful_only then
